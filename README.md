@@ -24,12 +24,12 @@ class API < Grape::API
 end
 ```
 
-### Use `render` to specify JSONAPI options
+### Use `render_resource` to specify JSONAPI options
 
 ```ruby
 get "/" do
   user = User.find("123")
-  render user, include: ["account"], context: { something: :important }
+  render_resource user, include: ["account"], context: { something: :important }
 end
 ```
 

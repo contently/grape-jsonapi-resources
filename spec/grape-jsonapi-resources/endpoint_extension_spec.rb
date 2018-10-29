@@ -15,16 +15,16 @@ describe 'Grape::EndpointExtension' do
 
   let(:users) { [user, user] }
 
-  describe '#render' do
+  describe '#render_resource' do
     before do
       allow(subject).to receive(:env).and_return({})
     end
 
-    it { should respond_to(:render) }
+    it { should respond_to(:render_resource) }
 
     context 'settings options' do
       it 'sets the jsonapi options on the environment' do
-        expect(subject.render(users, {include: ["included_resource"]})).to eq(users)
+        expect(subject.render_resource(users, {include: ["included_resource"]})).to eq(users)
         expect(subject.env).to include({"jsonapi_options"=>{:include=>["included_resource"]}})
       end
     end
